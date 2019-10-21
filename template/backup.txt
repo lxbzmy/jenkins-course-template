@@ -1,0 +1,23 @@
+#rsync -a --include-from=backup.txt ~/.jenkins/ /opt/backup/
+- **.DS_Store
+- **.Thumbs.db
++ *.xml
++ *.key*
++ config-history**
++ fingerprints**
++ nodes**
++ update-center-rootCAs**
++ updates**
++ secrets**
++ users**
++ plugins
++ plugins/*.jpi
++ plugins/*.hpi
++ userContent**
++ jobs
+- jobs/**/builds
+- jobs/**/workspace
++ jobs/**/
++ jobs/**/config.xml
++ jobs/**/nextBuildNumber
+- *

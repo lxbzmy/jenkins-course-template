@@ -1,0 +1,2 @@
+当currentBuild.buildCauses含ReplayCause或者RestartDeclarativePipelineCause时
+提取最初的build number
