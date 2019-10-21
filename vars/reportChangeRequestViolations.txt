@@ -1,0 +1,2 @@
+reportChangeRequestViolations()
+将spotbugsXml.xml中的违规项（ERROR）评论到git的merge request 界面中去

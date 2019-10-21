@@ -1,6 +1,12 @@
 # 学习使用Jenkins
 
+## 目录说明
 
+- *vars* groovy pipeline library
+- sample: jenkins pipeline script sample
+- template: jenkins script template, eg: job dsl
+- governance: jenkins jte script
+- src: let's study groovy
 ## 网络资料
 
 开始使用Jenkins：<https://jenkins.io/zh/doc/pipeline/tour/getting-started/>

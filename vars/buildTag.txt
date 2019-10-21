@@ -1,0 +1,11 @@
+buildTag() 生成一个自定义的build tag放在并放在环境变量里面
+可以放在step里面
+steps {
+  buildTag()
+}
+注入如下环境变量：
+JENKINS_TAG = "${env.BUILD_TAG}"
+BUILD_TAG2 = "${env.GIT_BRANCH}/${env.GIT_COMMIT}" /develop/ca9407a9374c157b1216ec26052d88901a4cbb4f
+GIT_GROUP1 = GIT_URL group1 例如：https://github.com/lxbzmy/pipeline_demo.git 中的lxbzmy
+GIT_GROUP2 = GIT_URL group2 例如：~ 中的 pipeline_demo
+GIT_COMMIT7 例如：ca9407a

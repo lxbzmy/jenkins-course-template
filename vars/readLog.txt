@@ -1,0 +1,26 @@
+读取build log。
+方式一：
+Reader reader = readLog();
+方式二：
+readLog { line->
+    //..parse
+}
+
+案例：
+node {
+   stage('purge'){
+     def a = parse_log();
+     writeFile encoding: 'utf-8', file: 'cmd.log', text: a
+   }
+
+}
+def parse_log(){
+  def result = "";
+  readLog { line->
+      def matcher = line =~ /\s+>\s+(.*)/
+      if(matcher){
+        result += matcher.group(1) +"\n";
+      }
+  }
+  return result;
+}

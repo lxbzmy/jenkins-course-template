@@ -1,0 +1,12 @@
+jenkins:
+  systemMessage: 由configuration-as-code-plugin来自动配置
+  numExecutors: 5
+  scmCheckoutRetryCount: 2
+  mode: NORMAL
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: admin
+          password: admin
+  authorizationStrategy: loggedInUsersCanDoAnything
