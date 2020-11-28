@@ -1,8 +1,8 @@
 /**
  * 创建一个项目组文件夹
  *
- * TODO 未完成【
  */
+repo = "http://192.168.56.1:3000/agilean/jenkins-course-template.git"
 job('create_team') {
   description('为项目组创规范文件夹目录')
   parameters {
@@ -12,7 +12,7 @@ job('create_team') {
   scm {
     git {
       remote {
-        github("http://192.168.3.119:3000/agilean/jenkins-course-template.git", "")
+        url(repo)
       }
       branch("*/master")
     }
