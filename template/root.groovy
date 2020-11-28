@@ -39,7 +39,7 @@ job('seed/root') {
  * 创建一个项目组文件夹
  *
  */
-job('seed/create_team') {
+job('seed/create_team_folder') {
   description('为项目组创规范文件夹目录')
   parameters {
     stringParam("code", "", "项目代号 英文，用作文件夹名字")
@@ -70,7 +70,7 @@ job('seed/create_team') {
  * 创建一个项目组文件夹
  *
  */
-job('seed/create_team') {
+job('seed/create_maven') {
   description('创建maven style job')
   parameters {
     stringParam("code", "", "文件夹")
