@@ -22,5 +22,17 @@ folder("$code/cycle") {
   displayName '回收站'
   description '存放废弃的任务'
 }
+folder("$code/feature") {
+  displayName '提交构建'
+  description '所有工程中研发分支提交时触发检查'
+}
+folder("$code/deploy") {
+  displayName '测试环境部署构建'
+  description '所有工程中release、master分支提交时触发，也可以人工触发'
+}
+folder("$code/tools") {
+  displayName '小工具'
+  description '按需使用的小工具'
+}
 
 
