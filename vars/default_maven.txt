@@ -1,5 +1,5 @@
 Full pipeline of mvn clean compile test jar package.
-使用方法：在Jenkinsfile中只写一句话：maven_package();
+使用方法：在Jenkinsfile中只写一句话：default_maven();
 就等同于：pipeline{
  ...
  stages{
