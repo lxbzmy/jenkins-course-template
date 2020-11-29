@@ -7,6 +7,14 @@
 - template: jenkins script template, eg: job dsl
 - governance: jenkins jte script
 - src: let's study groovy
+
+## 设置门禁
+
+
+https://docs.sonarqube.org/7.4/analysis/analysis-parameters/
+
+sonar-scanner -Dsonar.analysis.mode=preview -Dsonar.report.export.path=sonar-report.json
+
 ## 网络资料
 
 开始使用Jenkins：<https://jenkins.io/zh/doc/pipeline/tour/getting-started/>

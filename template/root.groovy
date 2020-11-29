@@ -67,7 +67,7 @@ job('seed/create_team_folder') {
 }
 
 /**
- * 创建一个项目组文件夹
+ * 创建"创建maven job seed"
  *
  */
 job('seed/create_maven') {
@@ -94,6 +94,34 @@ job('seed/create_maven') {
   steps {
     dsl {
       external('template/create_maven.groovy')
+    }
+  }
+}
+
+job('seed/create_maven_script_pipeline') {
+  description('创建maven script pipline')
+  parameters {
+    stringParam("folder", "", "文件夹")
+    stringParam("name", "", "job 名字")
+    stringParam("scm_url", "", "git库地址")
+  }
+  scm {
+    git {
+      remote {url(repo)}
+      branch("*/master")
+    }
+  }
+  wrappers {
+    buildNameSetter {
+      template('${folder}/${name}')
+      runAtStart(true)
+      runAtEnd(false)
+      descriptionTemplate('创建JOB，代号： ${folder}，名称：${name}')
+    }
+  }
+  steps {
+    dsl {
+      external('template/create_maven_script_pipline.groovy')
     }
   }
 }
