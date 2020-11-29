@@ -1,10 +1,10 @@
 def call() {
   pipeline {
     agent any
-    tools { maven 'default'}
+    tools { maven 'default' }
     options {
-        buildDiscarder(logRotator(numToKeepStr: '30'))
-        ansiColor('xterm')
+      buildDiscarder(logRotator(numToKeepStr: '30'))
+      ansiColor('xterm')
     }
     stages {
       stage('compile') {
@@ -13,20 +13,20 @@ def call() {
           sh "mvn clean package -Dtest.failure.ignore=true -DbuildTag=${BUILD_TAG2}"
         }
       }
-      stage('findbugs'){
+      stage('findbugs') {
         steps {
-              //https://spotbugs.readthedocs.io/en/latest/maven.html
-              //https://plugins.jenkins.io/warnings-ng
-              sh 'mvn com.github.spotbugs:spotbugs-maven-plugin:3.1.12:spotbugs'
-              recordIssues(
-                 enabledForFailure: true, aggregatingResults: true, 
-                 tools: [spotBugs(pattern: 'target/spotbugsXml.xml', useRankAsPriority: true)],
-                 qualityGates: [[threshold: 1, type: 'NEW_NORMAL', unstable: false]]
-                 /*
-                 sonar.analysis.mode=preview
-                 https://docs.sonarqube.org/7.4/analysis/analysis-parameters/
-                 */ 
-              )
+          //https://spotbugs.readthedocs.io/en/latest/maven.html
+          //https://plugins.jenkins.io/warnings-ng
+          sh 'mvn com.github.spotbugs:spotbugs-maven-plugin:3.1.12:spotbugs'
+          recordIssues(
+              enabledForFailure: true, aggregatingResults: true,
+              tools: [spotBugs(pattern: 'target/spotbugsXml.xml', useRankAsPriority: true)],
+              qualityGates: [[threshold: 1, type: 'NEW_NORMAL', unstable: false]]
+              /*
+              sonar.analysis.mode=preview
+              https://docs.sonarqube.org/7.4/analysis/analysis-parameters/
+              */
+          )
         }
       }
       stage('junit') {
@@ -37,9 +37,10 @@ def call() {
       }
       stage('package') {
         steps {
-              sh 'mvn package -DskipTests=true'
+          sh 'mvn package -DskipTests=true'
           archiveArtifacts 'target/*.jar'
         }
       }
     }
   }
+}
