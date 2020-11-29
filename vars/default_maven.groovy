@@ -4,6 +4,7 @@ def call() {
     tools { maven 'default'}
     options {
         buildDiscarder(logRotator(numToKeepStr: '30'))
+        ansiColor('xterm')
     }
     stages {
       stage('compile') {
