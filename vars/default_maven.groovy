@@ -9,7 +9,7 @@ def call() {
     stages {
       stage('compile') {
         steps {
-          buileTag()
+          buildTag()
           sh "mvn clean package -Dtest.failure.ignore=true -DbuildTag=${BUILD_TAG2}"
         }
       }
