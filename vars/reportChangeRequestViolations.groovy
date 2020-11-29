@@ -1,11 +1,10 @@
 def call() {
   ViolationsToGitHub(
     [
-      credentialsId: 'github_login_with_lxbzmy', 
+      credentialsId: 'github_login_key', 
       gitHubUrl: 'https://api.github.com/', 
       repositoryOwner: env.GIT_GROUP1, 
       repositoryName: env.GIT_GROUP2,
-
       commentOnlyChangedContent: true, 
       createCommentWithAllSingleFileComments: true, 
       createSingleFileComments: true, 
