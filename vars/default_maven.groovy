@@ -8,7 +8,8 @@ def call() {
     stages {
       stage('compile') {
         steps {
-          sh "mvn clean compile -Dtest.failure.ignore=true"
+          buileTag()
+          sh "mvn clean package -Dtest.failure.ignore=true -DbuildTag=${BUILD_TAG2}"
         }
       }
       stage('findbugs'){
