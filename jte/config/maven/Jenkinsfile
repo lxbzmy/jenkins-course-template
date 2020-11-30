@@ -1,0 +1,4 @@
+compile()
+unit_test()
+package()
+deploy_to dev

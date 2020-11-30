@@ -1,7 +1,6 @@
 void call() {
   stage('env') {
-    //sh encoding: 'utf-8', label: 'sdfasdfasdfasdf', returnStatus: true, returnStdout: true, script: ''
-    node {
+      //sh encoding: 'utf-8', label: 'sdfasdfasdfasdf', returnStatus: true, returnStdout: true, script: ''
       //git log doc https://git-scm.com/docs/pretty-formats
       String[] three = 'git log -1 --pretty=%H空%an空%ae'.execute().text.trim().split("空");
       String[] url = 'git remote -v'.execute().text.trim().split('\\s');
@@ -12,6 +11,5 @@ void call() {
       env.GIT_BRANCH = env.BRANCH_NAME
       env.GIT_URL = url[1]
       sh 'env'
-    }
   }
 }
