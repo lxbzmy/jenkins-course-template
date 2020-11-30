@@ -1,4 +1,6 @@
-compile()
-unit_test()
-create_package()
-deploy_to dev
+node {
+  compile()
+  unit_test()
+  create_package()
+  deploy_to dev
+}
