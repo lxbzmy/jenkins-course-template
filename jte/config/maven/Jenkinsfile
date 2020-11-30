@@ -1,4 +1,7 @@
 node {
+  stage('checkout'){
+     checkout scm
+  }
   compile()
   unit_test()
   create_package()
