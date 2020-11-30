@@ -20,7 +20,6 @@ application_environments{
       address = 'prod.foo.local'
     }
 }
-pipeline_template = "maven1.groovy"
 libraries{
     maven
     vm
