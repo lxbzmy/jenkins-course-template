@@ -1,4 +1,4 @@
 compile()
 unit_test()
-package()
+create_package()
 deploy_to dev
