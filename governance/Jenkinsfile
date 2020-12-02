@@ -1,2 +1,0 @@
-//这将会成为engine给项目提供的默认jenkinsfile
-mvn_default()
