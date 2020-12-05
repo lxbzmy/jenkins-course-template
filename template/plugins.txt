@@ -32,6 +32,7 @@ bootstrap4-api.jpi
 bouncycastle-api.jpi
 branch-api.jpi
 build-environment.jpi
+build-history-manager.jpi
 build-keeper-plugin.jpi
 build-monitor-plugin.jpi
 build-name-setter.jpi
@@ -81,6 +82,8 @@ font-awesome-api.jpi
 forensics-api.jpi
 git-client.jpi
 gitea.jpi
+gitee.jpi
+git-forensics.jpi
 github-api.jpi
 github-branch-source.jpi
 github.jpi
@@ -106,6 +109,7 @@ jquery.jpi
 jsch.jpi
 junit.jpi
 ldap.jpi
+list-git-branches-parameter.jpi
 locale.jpi
 localization-support.jpi
 localization-zh-cn.jpi
