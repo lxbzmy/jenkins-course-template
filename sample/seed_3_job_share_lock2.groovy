@@ -32,8 +32,9 @@ node {
         }
     }
     stage("api test") {
-        milestone()//可以去掉
-        build 'sea-ci-2/api-test'
+        milestone()//可以去掉，副作用是并发等待会变多，队列不够会死锁，好处是：所有执行都会有测试报告关联
+        def apitest = build 'sea-ci-2/api-test'
+        echo "测试报告: " + apitest.buildVariables.TEST_REPORT_URL
     }
 }"""
                 sandbox()
@@ -62,6 +63,10 @@ node {
     stage("run api test suit") {
         lock(resource: '${lock1}', extra: ${lock2}, inversePrecedence: true) {
             echo "run api test"
+            def reportId="d7e2fcd97bd105eeb3c24cde4ca9167ee9dae489"
+            env.TEST_REPORT_URL="http://www.baidu.com/"+reportId
+            env.reportId=reportId
+            currentBuild.description=\"""接口测试报告：[\${reportId}](http://www.baidu.com/\${reportId})\"""
             sleep(30 + 10 * Math.random())
         }
     }
