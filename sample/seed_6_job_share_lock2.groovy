@@ -7,7 +7,7 @@
  *
  */
 folder('sea-ci-2') {
-    description '演示三个微服务和一套测试案例，使用milestone和lock，效果是正在运行测试，则部署会等待，正在部署则api测试会等待'
+    description '演示6个微服务和一套测试案例，使用milestone和lock，效果是正在运行测试，则部署会等待，正在部署则api测试会等待'
 }
 String[] service = ['sea-auth', 'sea-core', 'sea-job','sea-limit','sea-dict','sea-oss']
 for (item in service) {
@@ -29,12 +29,17 @@ node {
         lock('sit-${item}') {
             echo "deploy to sit server"
             sleep(30 * Math.random())
+            //TODO如果部署失败，要报警，部署失败往往是cfm写错了
         }
     }
     stage("api test") {
         milestone()//可以去掉，副作用是并发等待会变多，队列不够会死锁，好处是：所有执行都会有测试报告关联
         def apitest = build 'sea-ci-2/api-test'
-        echo "测试报告: " + apitest.buildVariables.TEST_REPORT_URL
+        if(apitest.result=='SUCCESS'){
+            echo "测试报告: " + apitest.buildVariables.TEST_REPORT_URL
+        }else{
+            currentBuild.currentResult = api.result
+        }
     }
 }"""
                 sandbox()
@@ -60,7 +65,7 @@ node {
         echo "compile"
         sleep(3 * Math.random())
     }
-    stage("run api test suit") {
+    stage("run sit api test suit") {
         lock(resource: '${lock1}', extra: ${lock2}, inversePrecedence: true) {
             echo "run api test"
             def reportId="d7e2fcd97bd105eeb3c24cde4ca9167ee9dae489"
